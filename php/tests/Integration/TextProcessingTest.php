@@ -15,7 +15,7 @@ class TextProcessingTest extends TestCase
         $cleanedText = $textProcessor->analyse($text);
         $mostRepeatedWord = $textProcessor->orderText($cleanedText);
 
-        self::assertTrue($mostRepeatedWord === 'you');
+        self::assertTrue($mostRepeatedWord[0] === 'you');
     }
 
     /** @test */
@@ -26,6 +26,6 @@ class TextProcessingTest extends TestCase
         $cleanedText = $textProcessor->analyse($text);
         $mostRepeatedWord = $textProcessor->orderText($cleanedText);
 
-        self::assertTrue($mostRepeatedWord === 'you');
+        self::assertTrue($mostRepeatedWord[0] === 'you');
     }
 }

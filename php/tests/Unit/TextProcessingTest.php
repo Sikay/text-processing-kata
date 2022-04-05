@@ -14,7 +14,7 @@ class TextProcessingTest extends TestCase
         $textProcessor = new TextProcessing();
         $mostRepeatedWord = $textProcessor->orderText($text);
 
-        self::assertTrue($mostRepeatedWord === 'you');
+        self::assertTrue($mostRepeatedWord[0] === 'you');
     }
 
     /** @test */
