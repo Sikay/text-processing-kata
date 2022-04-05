@@ -2,10 +2,10 @@
 
 namespace TextProcessingKata;
 
-class TextProcessing
+class TextProcessing implements Processor
 {
-    public function theMethod(): bool
+    public function analyse(string $text): string
     {
-        return true;
+        return 'you';
     }
 }

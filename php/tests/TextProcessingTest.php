@@ -8,12 +8,12 @@ use PHPUnit\Framework\TestCase;
 class TextProcessingTest extends TestCase
 {
     /** @test */
-    public function give_me_a_good_name_please(): void
+    public function should_return_the_most_repeated_word(): void
     {
-        $xxx = new TextProcessing();
+        $text = 'Hello, this is an example for you to practice. You should grab this text and make it as your test case.';
+        $textProcessor = new TextProcessing();
+        $mostRepeatedWord = $textProcessor->analyse($text);
 
-        $result = $xxx->theMethod();
-
-        self::assertEquals(true, $result);
+        self::assertTrue($mostRepeatedWord === 'you');
     }
 }
