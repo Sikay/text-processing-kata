@@ -36,4 +36,18 @@ class TextProcessingTest extends TestCase
         $cleanedText = $this->textProcessor->analyse(self::VALID_TEXT);
         self::assertTrue($cleanedText === self::VALID_CLEANED_TEXT);
     }
+
+    /** @test */
+    public function should_return_words_repeated_in_order(): void
+    {
+        $orderWordsByRepeated = [
+            0 => 'you',
+            1 => 'this',
+            2 => 'it',
+        ];
+
+        $expectedOutput = 'Those are the top 10 words used:\n\n1. you\n2. this\n3. it\n\nThe text has in total 3 words';
+        $outputWordsInOrder = $this->textProcessor->outputWordsInOrder($orderWordsByRepeated);
+        self::assertTrue($outputWordsInOrder === $expectedOutput);
+    }
 }

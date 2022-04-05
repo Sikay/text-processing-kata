@@ -21,4 +21,13 @@ class TextProcessing implements Processor
         }
         return $wordsOrder;
     }
+
+    public function outputWordsInOrder(array $orderWords): string
+    {
+        $output = '';
+        foreach ($orderWords as $key => $word) {
+            $output .= $key + 1 . '. ' . $word . '\n';
+        }
+        return 'Those are the top 10 words used:\n\n' . $output . '\nThe text has in total ' . sizeof($orderWords) . ' words';
+    }
 }
