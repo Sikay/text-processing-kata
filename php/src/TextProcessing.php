@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Kata;
+namespace TextProcessingKata;
 
-class TheClass
+class TextProcessing
 {
     public function theMethod(): bool
     {

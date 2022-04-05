@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace KataTests;
+namespace TextProcessingKataTests;
 
-use Kata\TheClass;
+use TextProcessingKata\TextProcessing;
 use PHPUnit\Framework\TestCase;
 
-class MyClassTest extends TestCase
+class TextProcessingTest extends TestCase
 {
     /** @test */
     public function give_me_a_good_name_please(): void
     {
-        $xxx = new TheClass();
+        $xxx = new TextProcessing();
 
         $result = $xxx->theMethod();
 
