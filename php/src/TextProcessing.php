@@ -6,8 +6,13 @@ class TextProcessing implements Processor
 {
     public function analyse(string $text): string
     {
-        $cleanedText = preg_replace("/[^A-Za-z ]/", '', $text);
-        $wordsInText = array_count_values(explode(" ", strtolower($cleanedText)));
+        return preg_replace("/[^A-Za-z ]/", '', strtolower($text));
+
+    }
+
+    public function orderText(string $text): string
+    {
+        $wordsInText = array_count_values(explode(" ", $text));
         arsort($wordsInText);
         $wordsOrder = [];
         foreach ($wordsInText as $word => $repetitions) {

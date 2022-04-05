@@ -12,7 +12,8 @@ class TextProcessingTest extends TestCase
     {
         $text = 'Hello, this is an example for you to practice. You should grab this text and make it as your test case.';
         $textProcessor = new TextProcessing();
-        $mostRepeatedWord = $textProcessor->orderText($text);
+        $cleanedText = $textProcessor->analyse($text);
+        $mostRepeatedWord = $textProcessor->orderText($cleanedText);
 
         self::assertTrue($mostRepeatedWord === 'you');
     }
@@ -22,7 +23,8 @@ class TextProcessingTest extends TestCase
     {
         $text = 'Hello, this. is an example for you to practice. You, should grab this text, and make it as your test case.';
         $textProcessor = new TextProcessing();
-        $mostRepeatedWord = $textProcessor->orderText($text);
+        $cleanedText = $textProcessor->analyse($text);
+        $mostRepeatedWord = $textProcessor->orderText($cleanedText);
 
         self::assertTrue($mostRepeatedWord === 'you');
     }
