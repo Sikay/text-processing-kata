@@ -21,9 +21,9 @@ class TextProcessing implements Processor
         return $this->text;
     }
 
-    public function orderText(string $text): array
+    public function order(): array
     {
-        $wordsInText = array_count_values(explode(" ", $text));
+        $wordsInText = array_count_values(explode(" ", $this->text));
         arsort($wordsInText);
         $wordsOrder = [];
         foreach ($wordsInText as $word => $repetitions) {

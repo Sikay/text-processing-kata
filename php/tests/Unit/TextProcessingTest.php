@@ -15,7 +15,7 @@ class TextProcessingTest extends TestCase
     public function should_return_the_most_repeated_word(): void
     {
         $textProcessor = new TextProcessing(self::VALID_CLEANED_TEXT);
-        $orderWordsByRepeated = $textProcessor->orderText(self::VALID_CLEANED_TEXT);
+        $orderWordsByRepeated = $textProcessor->order();
         self::assertTrue($orderWordsByRepeated[0] === self::MOST_REPEATED_WORD);
     }
 

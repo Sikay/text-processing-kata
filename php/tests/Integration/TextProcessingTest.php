@@ -16,7 +16,7 @@ class TextProcessingTest extends TestCase
     public function should_return_the_most_repeated_word(): void
     {
         $textProcessor = new TextProcessing(self::VALID_TEXT);
-        $orderWordsByRepeated = $textProcessor->orderText($textProcessor->text());
+        $orderWordsByRepeated = $textProcessor->order();
 
         self::assertTrue($orderWordsByRepeated[0] === self::MOST_REPEATED_WORD);
     }
@@ -25,7 +25,7 @@ class TextProcessingTest extends TestCase
     public function should_return_the_most_repeated_word_with_more_signs(): void
     {
         $textProcessor = new TextProcessing(self::VALID_TEXT_WITH_MORE_SIGNS);
-        $orderWordsByRepeated = $textProcessor->orderText($textProcessor->text());
+        $orderWordsByRepeated = $textProcessor->order();
 
         self::assertTrue($orderWordsByRepeated[0] === self::MOST_REPEATED_WORD);
     }
@@ -34,7 +34,7 @@ class TextProcessingTest extends TestCase
     public function should_return_the_most_repeated_word_in_order(): void
     {
         $textProcessor = new TextProcessing(self::VALID_TEXT_WITH_MORE_SIGNS);
-        $orderWordsByRepeated = $textProcessor->orderText($textProcessor->text());
+        $orderWordsByRepeated = $textProcessor->order();
         $outputProcessor = new OutputProcessing();
         $outputOrderWordsByRepeated = $outputProcessor->outputWordsInOrder($orderWordsByRepeated);
 
