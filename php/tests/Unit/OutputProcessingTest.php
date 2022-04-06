@@ -28,7 +28,7 @@ class OutputProcessingTest extends TestCase
         ];
 
         $expectedOutput = 'Those are the top 10 words used:\n\n1. you\n2. this\n3. it\n\nThe text has in total 3 words';
-        $outputWordsInOrder = $this->outputProcessor->outputWordsInOrder($orderWordsByRepeated);
+        $outputWordsInOrder = $this->outputProcessor->outputTopWords($orderWordsByRepeated);
         self::assertTrue($outputWordsInOrder === $expectedOutput);
     }
 
@@ -51,7 +51,7 @@ class OutputProcessingTest extends TestCase
         ];
 
         $expectedOutput = 'Those are the top 10 words used:\n\n1. you\n2. this\n3. it\n4. your\n5. to\n6. text\n7. test\n8. should\n9. practice\n10. make\n\nThe text has in total 12 words';
-        $outputWordsInOrder = $this->outputProcessor->outputWordsInOrder($orderWordsByRepeated);
+        $outputWordsInOrder = $this->outputProcessor->outputTopWords($orderWordsByRepeated);
         var_dump($outputWordsInOrder);
         self::assertTrue($outputWordsInOrder === $expectedOutput);
     }

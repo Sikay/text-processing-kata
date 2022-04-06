@@ -4,7 +4,7 @@ namespace TextProcessingKata;
 
 class OutputProcessing
 {
-    public function outputWordsInOrder(array $orderWords): string
+    public function outputTopWords(array $orderWords): string
     {
         $maxOutputWords = 10;
         $output = '';
