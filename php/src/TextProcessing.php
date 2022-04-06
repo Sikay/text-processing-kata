@@ -5,6 +5,7 @@ namespace TextProcessingKata;
 class TextProcessing implements Processor
 {
     private const CLEANER_SIGNS_REGEX = '/[^A-Za-z ]/';
+    private const CLEANER_CODE_SNIPPETS_REGEX = '/`[\s\S]+?`/';
     private $text;
 
     public function __construct(string $text) {
@@ -13,7 +14,9 @@ class TextProcessing implements Processor
 
     public function analyse(string $text): string
     {
-        return preg_replace(self::CLEANER_SIGNS_REGEX, '', strtolower($text));
+        $textWithoutCodeSnippets = preg_replace(self::CLEANER_CODE_SNIPPETS_REGEX, '', strtolower($text));
+        $textWithoutSigns = preg_replace(self::CLEANER_SIGNS_REGEX, '', strtolower($textWithoutCodeSnippets));
+        return trim($textWithoutSigns);
     }
 
     public function text()
