@@ -5,10 +5,20 @@ namespace TextProcessingKata;
 class TextProcessing implements Processor
 {
     private const CLEANER_SIGNS_REGEX = '/[^A-Za-z ]/';
+    private $text;
+
+    public function __construct(string $text) {
+        $this->text = $this->analyse($text);
+    }
 
     public function analyse(string $text): string
     {
         return preg_replace(self::CLEANER_SIGNS_REGEX, '', strtolower($text));
+    }
+
+    public function text()
+    {
+        return $this->text;
     }
 
     public function orderText(string $text): array
