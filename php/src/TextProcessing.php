@@ -19,9 +19,14 @@ class TextProcessing implements Processor
         return trim($textWithoutSigns);
     }
 
-    public function text()
+    public function text(): string
     {
         return $this->text;
+    }
+
+    public function count(): int
+    {
+        return str_word_count($this->text, 0);
     }
 
     public function order(): array
