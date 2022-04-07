@@ -10,20 +10,28 @@ class TextProcessing implements Processor
     private $text;
 
     public function __construct(string $text) {
-        $this->text = $this->analyse($text);
+        $this->setText($text);
     }
 
-    public function analyse(string $text): string
+    private function setText(string $text): void
+    {
+        $cleanedText = $this->clean($text);
+        $this->analyse($cleanedText);
+        $this->text = $cleanedText;
+    }
+
+    public function analyse(string $text): void
+    {
+        if (empty($text)) {
+            throw new \InvalidArgumentException('Text can not be empty');
+        }
+    }
+
+    private function clean(string $text): string
     {
         $textWithoutCodeSnippets = preg_replace(self::CLEANER_CODE_SNIPPETS_REGEX, '', strtolower($text));
         $textWithoutSigns = preg_replace(self::CLEANER_SIGNS_REGEX, '', strtolower($textWithoutCodeSnippets));
-        $cleanedText = trim($textWithoutSigns);
-
-        if (empty($cleanedText)) {
-            throw new \InvalidArgumentException('Text can not be empty');
-        }
-
-        return $cleanedText;
+        return trim($textWithoutSigns);
     }
 
     public function text(): string

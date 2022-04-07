@@ -3,5 +3,5 @@
 namespace TextProcessingKata;
 
 interface Processor {
-   public function analyse(string $text): string;
+   public function analyse(string $text): void;
 }
