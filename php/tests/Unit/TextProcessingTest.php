@@ -52,4 +52,11 @@ class TextProcessingTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $textProcessor = new TextProcessing('');
     }
+
+    /** @test */
+    public function should_fail_when_give_only_numbers(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $textProcessor = new TextProcessing('386491');
+    }
 }
