@@ -45,4 +45,11 @@ class TextProcessingTest extends TestCase
         $textProcessor = new TextProcessing(self::VALID_TEXT);
         self::assertTrue($textProcessor->count() === 21);
     }
+
+    /** @test */
+    public function should_fail_when_give_a_empty_string(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $textProcessor = new TextProcessing('');
+    }
 }

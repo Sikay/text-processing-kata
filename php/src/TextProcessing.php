@@ -17,7 +17,13 @@ class TextProcessing implements Processor
     {
         $textWithoutCodeSnippets = preg_replace(self::CLEANER_CODE_SNIPPETS_REGEX, '', strtolower($text));
         $textWithoutSigns = preg_replace(self::CLEANER_SIGNS_REGEX, '', strtolower($textWithoutCodeSnippets));
-        return trim($textWithoutSigns);
+        $cleanedText = trim($textWithoutSigns);
+
+        if (empty($cleanedText)) {
+            throw new \InvalidArgumentException('Text can not be empty');
+        }
+
+        return $cleanedText;
     }
 
     public function text(): string
