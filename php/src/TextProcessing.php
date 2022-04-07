@@ -6,6 +6,7 @@ class TextProcessing implements Processor
 {
     private const CLEANER_SIGNS_REGEX = '/[^A-Za-z ]/';
     private const CLEANER_CODE_SNIPPETS_REGEX = '/`[\s\S]+?`/';
+    private const RETURN_TOTAL_WORDS = 0;
     private $text;
 
     public function __construct(string $text) {
@@ -26,7 +27,7 @@ class TextProcessing implements Processor
 
     public function count(): int
     {
-        return str_word_count($this->text, 0);
+        return str_word_count($this->text, self::RETURN_TOTAL_WORDS);
     }
 
     public function order(): array
