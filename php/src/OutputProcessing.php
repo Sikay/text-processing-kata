@@ -4,7 +4,7 @@ namespace TextProcessingKata;
 
 class OutputProcessing
 {
-    public function outputTopWords(array $orderWords): string
+    public function outputTopWords(array $orderWords, int $totalWords): string
     {
         $maxOutputWords = 10;
         $output = '';
@@ -15,6 +15,6 @@ class OutputProcessing
             }
             $countWord++;
         }
-        return 'Those are the top 10 words used:\n\n' . $output . '\nThe text has in total ' . sizeof($orderWords) . ' words';
+        return 'Those are the top 10 words used:\n\n' . $output . '\nThe text has in total ' . $totalWords . ' words';
     }
 }
