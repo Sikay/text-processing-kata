@@ -5,22 +5,33 @@ namespace TextProcessingKata;
 class WordsPrinter
 {
 
+    const MAX_OUTPUT_WORDS = 10;
+    const FIRST_LABEL = 1;
+
     public function print(array $words): string
     {
+        return $this->buildBody($words);
+    }
+
+    private function buildBody(array $words): string
+    {
         $body = '';
-        $label = 1;
+        $label = self::FIRST_LABEL;
         foreach ($words as $word) {
-            if ($label <= 10) {
-                $body .= $label . '. ' . $word;
+            $body .= $label . '. ' . $word;
+
+            if ($this->isLastWord(sizeof($words), $label)) {
+                return $body;
             }
 
-            if (sizeof($words) > $label && $label < 10) {
-                $body .= PHP_EOL;
-            }
-
+            $body .= PHP_EOL;
             $label++;
         }
-
         return $body;
+    }
+
+    private function isLastWord(int $words, int $actualLabel): bool
+    {
+        return $actualLabel >= $words || $actualLabel >= self::MAX_OUTPUT_WORDS;
     }
 }
