@@ -6,6 +6,7 @@ class TextProcessing
 {
     public function analyse(string $text): array
     {
+        $text = strtolower($text);
         $textWithoutSigns = str_replace(['.', ','], '', $text);
         $words = explode(' ', $textWithoutSigns);
         $wordsRepeat = array_count_values($words);
