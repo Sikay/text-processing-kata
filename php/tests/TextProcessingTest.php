@@ -7,47 +7,25 @@ use PHPUnit\Framework\TestCase;
 
 class TextProcessingTest extends TestCase
 {
-    /** @test */
-    public function should_return_one_word_when_give_one_word(): void
+    public function textProvider(): iterable
     {
-        $textProcessing = new TextProcessing();
-
-        $result = $textProcessing->analyse('one_word');
-
-        self::assertSame($result, ['one_word']);
-        self::assertSame(sizeof($result), 1);
+        yield ['one_word', ['one_word'], 1];
+        yield ['one_word two_word', ['one_word', 'two_word'], 2];
+        yield ['one_word., .two_word', ['one_word', 'two_word'], 2];
+        yield ['one_word two_word one_word', ['one_word', 'two_word'], 2];
     }
 
-    /** @test */
-    public function should_return_two_word_when_give_text_with_two_word(): void
+    /**
+     * @test
+     * @dataProvider textProvider
+     */
+    public function should_return_top_word_when_give_text(string $text, array $expectedWords, int $totalWords): void
     {
         $textProcessing = new TextProcessing();
 
-        $result = $textProcessing->analyse('one_word two_word');
+        $words = $textProcessing->analyse($text);
 
-        self::assertSame($result, ['one_word', 'two_word']);
-        self::assertSame(sizeof($result), 2);
-    }
-
-    /** @test */
-    public function should_return_two_word_when_give_text_with_two_word_and_signs(): void
-    {
-        $textProcessing = new TextProcessing();
-
-        $result = $textProcessing->analyse('one_word., .two_word');
-
-        self::assertSame($result, ['one_word', 'two_word']);
-        self::assertSame(sizeof($result), 2);
-    }
-
-    /** @test */
-    public function should_return_two_word_when_give_text_with_two_word_and_repeat_one_more_time(): void
-    {
-        $textProcessing = new TextProcessing();
-
-        $result = $textProcessing->analyse('one_word two_word one_word');
-
-        self::assertSame($result, ['one_word', 'two_word']);
-        self::assertSame(sizeof($result), 2);
+        self::assertSame($words, $expectedWords);
+        self::assertSame(sizeof($words), $totalWords);
     }
 }

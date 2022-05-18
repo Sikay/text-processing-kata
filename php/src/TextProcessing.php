@@ -8,7 +8,7 @@ class TextProcessing
     {
         $textWithoutSigns = str_replace(['.', ','], '', $text);
         $words = explode(' ', $textWithoutSigns);
-        $words = array_count_values($words);
-        return array_keys($words);
+        $wordsRepeat = array_count_values($words);
+        return array_keys($wordsRepeat);
     }
 }
