@@ -4,8 +4,8 @@ namespace TextProcessingKata;
 
 class TextProcessing
 {
-    public function theMethod(): bool
+    public function analyse(): array
     {
-        return true;
+        return ['one_word'];
     }
 }

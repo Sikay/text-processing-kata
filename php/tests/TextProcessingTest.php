@@ -8,12 +8,13 @@ use PHPUnit\Framework\TestCase;
 class TextProcessingTest extends TestCase
 {
     /** @test */
-    public function give_me_a_good_name_please(): void
+    public function should_return_one_word_when_give_one_word(): void
     {
-        $xxx = new TextProcessing();
+        $textProcessing = new TextProcessing();
 
-        $result = $xxx->theMethod();
+        $result = $textProcessing->analyse(['one_word']);
 
-        self::assertEquals(true, $result);
+        self::assertSame($result, ['one_word']);
+        self::assertSame(sizeof($result), 1);
     }
 }
