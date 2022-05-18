@@ -4,10 +4,10 @@ namespace TextProcessingKata;
 
 class TopWordsService
 {
-    private TextProcessing $textProcessing;
+    private Processor $textProcessing;
     private WordsPrinter $printer;
 
-    public function __construct(TextProcessing $textProcessing, WordsPrinter $printer)
+    public function __construct(Processor $textProcessing, WordsPrinter $printer)
     {
         $this->textProcessing = $textProcessing;
         $this->printer = $printer;

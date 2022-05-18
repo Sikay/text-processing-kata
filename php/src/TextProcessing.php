@@ -2,7 +2,7 @@
 
 namespace TextProcessingKata;
 
-class TextProcessing
+class TextProcessing implements Processor
 {
     public function analyse(string $text): ProcessText
     {
