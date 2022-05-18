@@ -10,9 +10,11 @@ class WordsPrinter
         $body = '';
         $label = 1;
         foreach ($words as $word) {
-            $body .= $label . '. ' . $word;
+            if ($label <= 10) {
+                $body .= $label . '. ' . $word;
+            }
 
-            if (sizeof($words) > $label) {
+            if (sizeof($words) > $label && $label < 10) {
                 $body .= PHP_EOL;
             }
 
