@@ -7,6 +7,8 @@ class TextProcessing
     public function analyse(string $text): array
     {
         $textWithoutSigns = str_replace(['.', ','], '', $text);
-        return explode(' ', $textWithoutSigns);
+        $words = explode(' ', $textWithoutSigns);
+        $words = array_count_values($words);
+        return array_keys($words);
     }
 }
