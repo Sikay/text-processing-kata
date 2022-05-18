@@ -10,10 +10,8 @@ class WordsPrinter
 
     public function print(array $words): string
     {
-        $header = "Those are the top ";
-        $header .= min(sizeof($words), self::MAX_OUTPUT_WORDS);
-        $header .= " words used:\n\n";
-        return $header . $this->buildBody($words);
+        $footer = "\n\nThe text has in total " . sizeof($words) . " words";
+        return $this->buildHeader($words). PHP_EOL . PHP_EOL . $this->buildBody($words) . $footer;
     }
 
     private function buildBody(array $words): string
@@ -36,5 +34,10 @@ class WordsPrinter
     private function isLastWord(int $words, int $actualLabel): bool
     {
         return $actualLabel >= $words || $actualLabel >= self::MAX_OUTPUT_WORDS;
+    }
+
+    private function buildHeader(array $words): string
+    {
+        return "Those are the top " . min(sizeof($words), self::MAX_OUTPUT_WORDS) . " words used:";
     }
 }
