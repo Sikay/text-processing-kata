@@ -17,4 +17,15 @@ class TextProcessingTest extends TestCase
         self::assertSame($result, ['one_word']);
         self::assertSame(sizeof($result), 1);
     }
+
+    /** @test */
+    public function should_return_two_word_when_give_text_with_two_word(): void
+    {
+        $textProcessing = new TextProcessing();
+
+        $result = $textProcessing->analyse('one_word two_word');
+
+        self::assertSame($result, ['one_word', 'two_word']);
+        self::assertSame(sizeof($result), 2);
+    }
 }

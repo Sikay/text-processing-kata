@@ -6,6 +6,6 @@ class TextProcessing
 {
     public function analyse(string $text): array
     {
-        return [$text];
+        return explode(' ', $text);
     }
 }
