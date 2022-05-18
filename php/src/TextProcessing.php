@@ -6,6 +6,7 @@ class TextProcessing
 {
     public function analyse(string $text): array
     {
-        return explode(' ', $text);
+        $textWithoutSigns = str_replace(['.', ','], '', $text);
+        return explode(' ', $textWithoutSigns);
     }
 }
