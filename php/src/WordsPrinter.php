@@ -8,9 +8,11 @@ class WordsPrinter
     const MAX_OUTPUT_WORDS = 10;
     const FIRST_LABEL = 1;
 
-    public function print(array $words): string
+    public function print(ProcessText $processText): string
     {
-        return $this->buildHeader($words) . PHP_EOL . $this->buildBody($words) . PHP_EOL . $this->buildFooter($words);;
+        return $this->buildHeader($processText->topWords()) . PHP_EOL .
+            $this->buildBody($processText->topWords()) . PHP_EOL .
+            $this->buildFooter($processText->totalWords());
     }
 
     private function buildBody(array $words): string
@@ -37,8 +39,8 @@ class WordsPrinter
         return "Those are the top " . min(sizeof($words), self::MAX_OUTPUT_WORDS) . " words used:" . PHP_EOL;
     }
 
-    private function buildFooter(array $words): string
+    private function buildFooter(int $totalWords): string
     {
-        return "The text has in total " . sizeof($words) . " words";
+        return "The text has in total " . $totalWords . " words";
     }
 }

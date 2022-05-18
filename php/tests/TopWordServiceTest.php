@@ -9,7 +9,7 @@ use TextProcessingKata\WordsPrinter;
 
 class TopWordsServiceTest extends TestCase
 {
-
+    /** @test */
     public function should_given_text_return_the_top_words_used(): void
     {
         $expected = "Those are the top 10 words used:" . PHP_EOL .
