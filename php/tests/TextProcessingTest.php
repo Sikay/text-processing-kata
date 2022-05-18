@@ -12,9 +12,9 @@ class TextProcessingTest extends TestCase
         yield ['one_word', ['one_word'], 1];
         yield ['one_word two_word', ['one_word', 'two_word'], 2];
         yield ['one_word., .two_word', ['one_word', 'two_word'], 2];
-        yield ['one_word two_word one_word', ['one_word', 'two_word'], 2];
-        yield ['one_word two_word two_word', ['two_word', 'one_word'], 2];
-        yield ['one_word two_word TWO_word', ['two_word', 'one_word'], 2];
+        yield ['one_word two_word one_word', ['one_word', 'two_word'], 3];
+        yield ['one_word two_word two_word', ['two_word', 'one_word'], 3];
+        yield ['one_word two_word TWO_word', ['two_word', 'one_word'], 3];
     }
 
     /**
@@ -27,7 +27,7 @@ class TextProcessingTest extends TestCase
 
         $words = $textProcessing->analyse($text);
 
-        self::assertSame($words, $expectedWords);
-        self::assertSame(sizeof($words), $totalWords);
+        self::assertSame($words->topWords(), $expectedWords);
+        self::assertSame($words->totalWords(), $totalWords);
     }
 }

@@ -4,10 +4,10 @@ namespace TextProcessingKata;
 
 class TextProcessing
 {
-    public function analyse(string $text): array
+    public function analyse(string $text): ProcessText
     {
         $words = explode(' ', $this->clean($text));
-        return $this->orderByRepeatWords($words);
+        return new ProcessText($this->orderByRepeatWords($words), sizeof($words));
     }
 
     private function clean(string $text)
