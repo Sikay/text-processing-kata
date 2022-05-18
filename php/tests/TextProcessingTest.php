@@ -12,7 +12,7 @@ class TextProcessingTest extends TestCase
     {
         $textProcessing = new TextProcessing();
 
-        $result = $textProcessing->analyse(['one_word']);
+        $result = $textProcessing->analyse('one_word');
 
         self::assertSame($result, ['one_word']);
         self::assertSame(sizeof($result), 1);

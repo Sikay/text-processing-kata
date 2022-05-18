@@ -4,8 +4,8 @@ namespace TextProcessingKata;
 
 class TextProcessing
 {
-    public function analyse(): array
+    public function analyse(string $text): array
     {
-        return ['one_word'];
+        return [$text];
     }
 }
