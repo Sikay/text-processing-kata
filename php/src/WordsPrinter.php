@@ -10,7 +10,10 @@ class WordsPrinter
 
     public function print(array $words): string
     {
-        return $this->buildBody($words);
+        $header = "Those are the top ";
+        $header .= min(sizeof($words), self::MAX_OUTPUT_WORDS);
+        $header .= " words used:\n\n";
+        return $header . $this->buildBody($words);
     }
 
     private function buildBody(array $words): string
