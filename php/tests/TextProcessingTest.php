@@ -13,6 +13,7 @@ class TextProcessingTest extends TestCase
         yield ['one_word two_word', ['one_word', 'two_word'], 2];
         yield ['one_word., .two_word', ['one_word', 'two_word'], 2];
         yield ['one_word two_word one_word', ['one_word', 'two_word'], 2];
+        yield ['one_word two_word two_word', ['two_word', 'one_word'], 2];
     }
 
     /**
