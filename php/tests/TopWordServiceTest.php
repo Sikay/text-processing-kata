@@ -24,6 +24,12 @@ class TopWordsServiceTest extends TestCase
                                             PHP_EOL .
                                             "The text has in total 21 words";
     private const VALID_TEXT_WITH_SIGNS = "Hello, this is an example for you to practice. You should grab this text and make it as your test case.";
+    private const VALID_TEXT_WITH_CODE_SNIPPETS = "Hello, this is an example for you to practice. You should grab this text and make it as your test case:" .
+                                                    "` ` `javascript" .
+                                                    "if (true) {" .
+                                                    "  console.log('should should should')" .
+                                                    "}" .
+                                                    "` ` `";
 
     /** @test */
     public function should_given_text_return_the_top_words_used(): void
@@ -37,15 +43,9 @@ class TopWordsServiceTest extends TestCase
     /** @test */
     public function should_given_text_return_the_top_words_used_without_code_snippets(): void
     {
-        $text = "Hello, this is an example for you to practice. You should grab this text and make it as your test case:" .
-                    "` ` `javascript" .
-                    "if (true) {" .
-                    "  console.log('should should should')" .
-                    "}" .
-                    "` ` `";
         $textProcessing = new TextProcessing();
         $printer = new WordsPrinter();
         $topWordService = new TopWordsService($textProcessing, $printer);
-        self::assertSame(self::VALID_EXPECTED_OUTPUT, $topWordService->execute($text));
+        self::assertSame(self::VALID_EXPECTED_OUTPUT, $topWordService->execute(self::VALID_TEXT_WITH_CODE_SNIPPETS));
     }
 }
